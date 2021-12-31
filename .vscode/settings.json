@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.proxy": {
+        "proxyUri": "http://localhost:3000"
+    },
+    "liveServer.settings.port": 5502
+}
