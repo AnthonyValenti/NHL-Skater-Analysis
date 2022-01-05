@@ -67,7 +67,7 @@ const chart2 = new Chart(ctx2,{
 
 
 async function getData(name,chart){
-    const response = await fetch('http://localhost:5501/api');
+    const response = await fetch('https://nhl-player-analysis-server.herokuapp.com/api');
     const data = await response.json();
     for (item of data){
         if(name==item.Player){
@@ -88,7 +88,7 @@ async function searchPlayer(){
     var sugBox1 = document.getElementById('sugBox1');
     var sugBox2 = document.getElementById('sugBox2');   
     var input1 = document.getElementById('search1');
-    const response = await fetch('http://localhost:5501/api');
+    const response = await fetch('https://nhl-player-analysis-server.herokuapp.com/api');
     const data = await response.json();
     input1.addEventListener("input",function(event){
         let matches = data.filter( player =>{
