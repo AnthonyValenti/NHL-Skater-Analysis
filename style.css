@@ -95,6 +95,29 @@ header{
   transform: translate(-50%, -50%);
 }
 
+.sugBox1{
+  position: absolute;
+  border: 2px solid #00B4CC;
+  height: fit-content;
+  width: 93%;
+  top: 98%;
+  border-radius: 0 0 5px 5px;
+  outline: none;
+  visibility: hidden;
+}
+
+.sugBox2{
+  position: absolute;
+  border: 2px solid #00B4CC;
+  height: fit-content;
+  width: 93%;
+  top: 98%;
+  border-radius: 0 0 5px 5px;
+  outline: none;
+  visibility: hidden;
+}
+
+
 .chart1{
   width: 30%;
   position: absolute;
