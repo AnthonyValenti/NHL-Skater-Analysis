@@ -7,7 +7,7 @@ const chart1 = new Chart(ctx1,{
         datasets: [
             {
             label: 'Z Score',
-            data: []   
+            data: [],   
             }
         ]
     },
@@ -67,7 +67,7 @@ const chart2 = new Chart(ctx2,{
 
 
 async function getData(name,chart){
-    const response = await fetch('https://nhl-player-analysis-server.herokuapp.com/api');
+    const response = await fetch('http://localhost:5501/api'); // change to heroku
     const data = await response.json();
     for (item of data){
         if(name==item.Player){
@@ -77,9 +77,8 @@ async function getData(name,chart){
             removeData(chart);
             addData(chart,'GF/60',((item.GF-data[0].GF)/data[1].GF));
             addData(chart,'xGF/60',((item.xGF-data[0].xGF)/data[1].xGF));
-            addData(chart,'GA/60',((item.GA-data[0].GA)/data[1].GA));
-            addData(chart,'xGA/60',((item.xGA-data[0].xGA)/data[1].xGA));
-
+            addData(chart,'GA/60',(-((item.GA-data[0].GA)/data[1].GA)));
+            addData(chart,'xGA/60',(-((item.xGA-data[0].xGA)/data[1].xGA)));
         }
     }
 }
@@ -88,16 +87,21 @@ async function searchPlayer(){
     var sugBox1 = document.getElementById('sugBox1');
     var sugBox2 = document.getElementById('sugBox2');   
     var input1 = document.getElementById('search1');
-    const response = await fetch('https://nhl-player-analysis-server.herokuapp.com/api');
+    var searchBtn1 = document.getElementById('searchBtn1');
+    const response = await fetch('http://localhost:5501/api'); //change to heroku 
     const data = await response.json();
     input1.addEventListener("input",function(event){
         let matches = data.filter( player =>{
-        const regex = new RegExp(`^${input1.value}`,'gi');
+        const regex = new RegExp(`${input1.value}`,'gi');
         return player.Player.match(regex)
         }); 
-        if(matches.length>=0){
+        if(matches[0].Player!="Mean Value" && matches[0].Player!= "Standerd Deviation"){
             sugBox1.style.visibility="visible";
             sugBox1.innerText = matches[0].Player;
+        }
+        else{
+            sugBox1.style.visibility="hidden";
+            sugBox1.innerText = "";
         }
     });
     sugBox1.onclick=function(){
@@ -117,12 +121,16 @@ async function searchPlayer(){
     var input2 = document.getElementById('search2');
     input2.addEventListener("input",function(event){
         let matches2 = data.filter( player =>{
-        const regex2 = new RegExp(`^${input2.value}`,'gi');
+        const regex2 = new RegExp(`${input2.value}`,'gi');
         return player.Player.match(regex2)
         }); 
-        if(matches2.length>=0){
+        if(matches2[0].Player!="Mean Value" && matches2[0].Player!= "Standerd Deviation"){
             sugBox2.style.visibility="visible";
             sugBox2.innerText = matches2[0].Player;
+        }
+        else{
+            sugBox2.style.visibility="hidden";
+            sugBox2.innerText = "";
         }
     });
     sugBox2.onclick=function(){
@@ -137,4 +145,8 @@ async function searchPlayer(){
             getData(input2.value,chart2);            
         }
     });
+    searchBtn1.onclick=function(){
+        getData(input1.value,chart1);
+        sugBox1.style.visibility="hidden";
+    }
 }

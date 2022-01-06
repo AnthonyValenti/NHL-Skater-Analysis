@@ -133,5 +133,37 @@ header{
 
 }
 
+.gfText{
+  position: absolute;
+  font-size: 15px;
+  bottom: 10%;
+}
+
+.xGFText{
+  position: absolute;
+  font-size: 15px;
+  bottom: 8%;
+
+}
+.gaText{
+  position: absolute;
+  font-size: 15px;
+  bottom: 6%;
+}
+
+.xGAText{
+  position: absolute;
+  font-size: 15px;
+  bottom: 4%;
+
+}
+.dataText{
+  position: absolute;
+  font-size: 15px;
+  bottom: 0%;
+  left: 30%;
+
+}
+
 
 
