@@ -1,5 +1,5 @@
 # NHL-Skater-Analysis
-Checkout this project here: https://playeranalysis.netlify.app \n
+Checkout this project here: https://playeranalysis.netlify.app
 FrontEnd designed with Javascript, backend built with Node.js and MongoDB.
 This basic web app aims to display and compare advanced NHL offensive and defensive skater metrics.
 The four stats tracked are:
