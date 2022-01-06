@@ -1,7 +1,7 @@
 //Imports and server setup
 const { response } = require('express');
 const { MongoClient } = require('mongodb');
-const url = "mongodb+srv://anthony:Pole13579@cluster1.bvl6p.mongodb.net/nhldata?retryWrites=true&w=majority";
+const url = "mongodb+srv://user:password@cluster1.bvl6p.mongodb.net/nhldata?retryWrites=true&w=majority";
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const express = require('express');
 const app = express();
